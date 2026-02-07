@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine’s Invitation 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PAGE 1: Start -->
+<section id="page1" class="page active">
+    <h1 class="heart">💌</h1>
+    <h2 class="sweet-text">A Special Invitation for You</h2>
+    <button onclick="nextPage(2)">Open 💖</button>
+</section>
+
+<!-- PAGE 2: Memories (12 pictures in grid) -->
+<section id="page2" class="page">
+    <h2 class="sweet-text">Our Memories 💕</h2>
+
+    <div class="memories">
+        <div><img src="1.jpg" alt="Memory 1"><p>🥹</p></div>
+        <div><img src="2.jpg" alt="Memory 2"><p>💖</p></div>
+        <div><img src="3.jpg" alt="Memory 3"><p>😂</p></div>
+        <div><img src="4.jpg" alt="Memory 4"><p>❤️</p></div>
+        <div><img src="5.jpg" alt="Memory 5"><p>🌟</p></div>
+        <div><img src="6.jpg" alt="Memory 6"><p>🍿</p></div>
+        <div><img src="7.jpg" alt="Memory 7"><p>👫</p></div>
+        <div><img src="8.jpg" alt="Memory 8"><p>❤️</p></div>
+        <div><img src="9.jpg" alt="Memory 9"><p>🎁</p></div>
+        <div><img src="10.jpg" alt="Memory 10"><p>🛋️</p></div>
+        <div><img src="11.jpg" alt="Memory 11"><p>🌊</p></div>
+        <div><img src="12.jpg" alt="Memory 12"><p>💕</p></div>
+    </div>
+
+    <button onclick="toggleLetter()">💌 Read My Letter</button>
+
+    <div id="letter" class="letter hidden"></div>
+
+    <button onclick="nextPage(3)">Next</button>
+</section>
+
+<!-- PAGE 3: Anniversary -->
+<section id="page3" class="page">
+    <h2 class="sweet-text">When is our anniversary?</h2>
+    <input type="date" id="anniv">
+    <p id="annivError" class="error"></p>
+    <button onclick="validateAnniv()">Next</button>
+</section>
+
+<!-- PAGE 4: Dating Duration -->
+<section id="page4" class="page">
+    <h2 class="sweet-text">How long have we been dating?</h2>
+    <input type="text" id="duration" placeholder="">
+    <p id="durationError" class="error"></p>
+    <button onclick="validateDuration()">Next</button>
+</section>
+
+<!-- PAGE 5: Will you be my Valentine -->
+<section id="page5" class="page">
+    <h2 class="highlight sweet-text">Will you be my Valentine? 💘</h2>
+
+    <button onclick="yesAnswer()">YES 💖</button>
+    <button class="no-btn" onclick="moveNo(this)">No 🙄</button>
+
+    <img id="usPic" src="9.jpg" class="hidden us-pic">
+    <button onclick="nextPage(6)">Next</button>
+</section>
+
+<!-- PAGE 6: Valentine Plan -->
+<section id="page6" class="page">
+    <h2 class="sweet-text">Do you already have plans for Valentine’s Day, or may I plan something for us?</h2>
+    <input type="text" id="plan" placeholder="Type your answer">
+    <button onclick="nextPage(7)">Next</button>
+</section>
+
+<!-- PAGE 7: Meaningful Valentine -->
+<section id="page7" class="page">
+    <h2 class="sweet-text">What would make Valentine’s Day meaningful for you?</h2>
+    <input type="text" id="meaning" placeholder="Type your answer">
+    <button onclick="nextPage(8)">Next</button>
+</section>
+
+<!-- PAGE 8: Special or Chill -->
+<section id="page8" class="page">
+    <h2 class="sweet-text">Are we doing something special or keeping it chill?</h2>
+    <input type="text" id="special" placeholder="Type your answer">
+    <button onclick="nextPage(9)">Next</button>
+</section>
+
+<!-- PAGE 9: Dinner or Stay-in -->
+<section id="page9" class="page">
+    <h2 class="sweet-text">Dinner date or stay-in date?</h2>
+    <input type="text" id="dinner" placeholder="Type your answer">
+    <button onclick="nextPage(10)">Next</button>
+</section>
+
+<!-- PAGE 10: Valentine Requests -->
+<section id="page10" class="page">
+    <h2 class="sweet-text">Any Valentine’s requests? 😄</h2>
+    <input type="text" id="requests" placeholder="Type your answer">
+    <button onclick="nextPage(11)">Next</button>
+</section>
+
+<!-- PAGE 11: Dream Valentine Plan -->
+<section id="page11" class="page">
+    <h2 class="sweet-text">What’s your dream Valentine’s plan with me?</h2>
+    <input type="text" id="dream" placeholder="Type your answer">
+    <button onclick="nextPage(12)">Finish 💌</button>
+</section>
+
+<!-- PAGE 12: Final Sweet Page -->
+<section id="page12" class="page final-page">
+    <h1 class="heart">💖 I Love You So Much! 💖</h1>
+    <p class="sweet-text">Forever & Always 💕</p>
+    <div class="final-pic-slot">
+        <img src="2.jpg" alt="Us Together">
+    </div>
+</section>
+
+<script>
+// Page navigation
+function nextPage(num) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + num).classList.add('active');
+}
+
+// Toggle letter with typing effect
+function toggleLetter() {
+    const letterDiv = document.getElementById('letter');
+    if (!letterDiv.classList.contains('hidden')) {
+        letterDiv.classList.add('hidden');
+        letterDiv.innerText = "";
+        return;
+    }
+    letterDiv.classList.remove('hidden');
+    const text = `My love, every moment with you feels special.\nYou make my days brighter, my laughs louder,\nand my heart fuller. 💕`;
+    letterDiv.innerText = "";
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            letterDiv.innerText += text.charAt(i);
+            i++;
+            setTimeout(type, 50);
+        }
+    }
+    type();
+}
+
+// Page 3: Validate anniversary
+function validateAnniv() {
+    if (document.getElementById('anniv').value !== "2025-05-18") {
+        document.getElementById('annivError').innerText = "Wrong date 😝";
+    } else {
+        document.getElementById('annivError').innerText = "";
+        nextPage(4);
+    }
+}
+
+// Page 4: Validate duration
+function validateDuration() {
+    if (document.getElementById('duration').value.trim() !== "8 months and 20 days") {
+        document.getElementById('durationError').innerText = "Try again 😏";
+    } else {
+        document.getElementById('durationError').innerText = "";
+        nextPage(5);
+    }
+}
+
+// Page 5: Valentine question
+function moveNo(btn) {
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "%";
+    btn.style.top = Math.random() * 80 + "%";
+}
+
+function yesAnswer() {
+    document.getElementById('usPic').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>

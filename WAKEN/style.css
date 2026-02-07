@@ -1,0 +1,165 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(to bottom, #ffe0e6, #ffd1dc);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Page transitions */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    border-radius: 25px;
+    background: #ff7aa1;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255,0,80,0.3);
+    transition: all 0.3s ease;
+}
+button:hover {
+    background: #ff4d84;
+    transform: scale(1.05);
+}
+
+/* No button random movement */
+.no-btn:hover {
+    position: absolute;
+    left: calc(10% + 80% * var(--rand-x));
+    top: calc(10% + 80% * var(--rand-y));
+}
+
+/* Heart icon */
+.heart {
+    font-size: 120px;
+    color: #ff1e70;
+    text-shadow: 0 0 10px #ffb3c6, 0 0 20px #ff80aa;
+}
+
+/* Sweet headings */
+.sweet-text {
+    font-family: 'Pacifico', cursive;
+    color: #d6006c;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+/* Memories grid */
+.memories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    margin: 20px 0;
+}
+.memories img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.memories img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255,0,100,0.4);
+}
+.memories p {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #d6006c;
+}
+
+/* Letter box */
+.letter {
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 60%;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(255,0,100,0.2);
+}
+.hidden { display: none; }
+
+/* Error messages */
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+/* Highlight for Valentine question */
+.highlight {
+    color: #d6006c;
+    font-size: 32px;
+}
+
+/* Valentine picture */
+.us-pic {
+    width: 250px;
+    border-radius: 25px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(255,0,100,0.3);
+}
+.final-img {
+    width: 300px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(255,0,100,0.4);
+}
+
+/* Input fields */
+input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 2px solid #ff7aa1;
+    margin-top: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+/* Final page */
+.final-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.final-pic-slot {
+    margin-top: 20px;
+}
+.final-pic-slot img {
+    width: 280px;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(255,0,100,0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .memories img {
+        max-width: 120px;
+    }
+    input {
+        width: 200px;
+    }
+    .sweet-text {
+        font-size: 24px;
+    }
+}
